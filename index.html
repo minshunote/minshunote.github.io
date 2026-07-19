@@ -1,0 +1,742 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="MinshuNoteは、政治・法律・社会問題について、公的資料や一次資料をもとに情報を整理する個人運営の資料サイトです。">
+
+<title>MinshuNote｜政治・法律・社会問題の資料サイト</title>
+
+<style>
+
+/* ==============================
+   基本設定
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: #f6f7f8;
+    color: #202122;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        Meiryo,
+        sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+a {
+    color: #2458a6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ==============================
+   ヘッダー
+============================== */
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #c8ccd1;
+}
+
+.header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 26px 24px 20px;
+}
+
+.site-title {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.2rem;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+.site-title a {
+    color: #202122;
+    text-decoration: none;
+}
+
+.site-description {
+    margin: 4px 0 0;
+    color: #54595d;
+    font-size: 0.95rem;
+}
+
+
+/* ==============================
+   ナビゲーション
+============================== */
+
+.main-nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #c8ccd1;
+}
+
+.nav-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 10px 24px;
+}
+
+.nav-inner a {
+    color: #202122;
+    font-size: 0.95rem;
+}
+
+.nav-inner a:hover {
+    color: #2458a6;
+}
+
+
+/* ==============================
+   メインレイアウト
+============================== */
+
+.page-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 24px;
+    max-width: 1120px;
+    margin: 26px auto;
+    padding: 0 24px;
+}
+
+.main-content,
+.sidebar-box {
+    background-color: #ffffff;
+    border: 1px solid #c8ccd1;
+}
+
+.main-content {
+    padding: 32px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-box {
+    padding: 18px;
+}
+
+
+/* ==============================
+   見出し
+============================== */
+
+.page-title {
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #a2a9b1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.section-title {
+    margin: 38px 0 18px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #a2a9b1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.55rem;
+    font-weight: normal;
+}
+
+.sidebar-title {
+    margin: 0 0 12px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #c8ccd1;
+    font-size: 1rem;
+}
+
+
+/* ==============================
+   導入文・案内
+============================== */
+
+.lead {
+    font-size: 1.05rem;
+}
+
+.policy-notice {
+    margin: 24px 0;
+    padding: 16px 18px;
+    background-color: #eef5ff;
+    border-left: 5px solid #3366cc;
+}
+
+.policy-notice strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+/* ==============================
+   記事一覧
+============================== */
+
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.article-card {
+    padding: 20px;
+    background-color: #fafafa;
+    border: 1px solid #c8ccd1;
+}
+
+.article-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.08rem;
+}
+
+.article-card p {
+    margin: 0 0 12px;
+    color: #54595d;
+    font-size: 0.94rem;
+}
+
+.article-status {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #eaecf0;
+    color: #54595d;
+    border-radius: 2px;
+    font-size: 0.8rem;
+}
+
+
+/* ==============================
+   分野一覧
+============================== */
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding: 0;
+    list-style: none;
+}
+
+.category-list li {
+    padding: 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #c8ccd1;
+}
+
+.category-list strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.category-list span {
+    color: #54595d;
+    font-size: 0.88rem;
+}
+
+
+/* ==============================
+   編集方針
+============================== */
+
+.policy-list {
+    padding-left: 1.4em;
+}
+
+.policy-list li {
+    margin-bottom: 8px;
+}
+
+
+/* ==============================
+   サイドバー
+============================== */
+
+.sidebar-box p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.sidebar-box ul {
+    margin: 0;
+    padding-left: 1.3em;
+}
+
+.sidebar-box li {
+    margin-bottom: 7px;
+    font-size: 0.9rem;
+}
+
+.update-date {
+    color: #54595d;
+    font-size: 0.85rem;
+}
+
+
+/* ==============================
+   フッター
+============================== */
+
+.site-footer {
+    margin-top: 40px;
+    background-color: #ffffff;
+    border-top: 1px solid #c8ccd1;
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px;
+    color: #54595d;
+    font-size: 0.85rem;
+}
+
+.footer-inner p {
+    margin: 4px 0;
+}
+
+
+/* ==============================
+   スマートフォン対応
+============================== */
+
+@media (max-width: 850px) {
+
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+
+    .article-list {
+        grid-template-columns: 1fr;
+    }
+
+    .category-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .header-inner,
+    .nav-inner,
+    .page-container,
+    .footer-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .main-content {
+        padding: 22px 18px;
+    }
+
+    .site-title {
+        font-size: 1.8rem;
+    }
+
+    .page-title {
+        font-size: 1.65rem;
+    }
+
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ==============================
+     ヘッダー
+============================== -->
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <h1 class="site-title">
+            <a href="index.html">MinshuNote</a>
+        </h1>
+
+        <p class="site-description">
+            政治・法律・社会問題に関する情報整理サイト
+        </p>
+
+    </div>
+</header>
+
+
+<!-- ==============================
+     ナビゲーション
+============================== -->
+
+<nav class="main-nav" aria-label="メインメニュー">
+    <div class="nav-inner">
+
+        <a href="index.html">トップページ</a>
+        <a href="#articles">記事一覧</a>
+        <a href="#categories">分野別資料</a>
+        <a href="#about">サイトについて</a>
+        <a href="#policy">編集方針</a>
+
+    </div>
+</nav>
+
+
+<!-- ==============================
+     ページ本体
+============================== -->
+
+<div class="page-container">
+
+
+    <!-- メインコンテンツ -->
+
+    <main class="main-content">
+
+        <h2 class="page-title">MinshuNoteへようこそ</h2>
+
+        <p class="lead">
+            MinshuNoteは、政治・法律・社会問題に関する情報を、
+            法令、公的機関の資料、統計、研究資料などをもとに整理する
+            個人運営の資料サイトです。
+        </p>
+
+        <p>
+            制度や出来事の概要、成立までの経緯、関係する法律、
+            主な論点などを、できる限り分かりやすく紹介することを目的としています。
+        </p>
+
+        <div class="policy-notice">
+
+            <strong>中立性について</strong>
+
+            本サイトは、特定の政党、政治家、思想、団体または社会運動を
+            支持・批判することを目的としていません。
+
+        </div>
+
+
+        <!-- 記事一覧 -->
+
+        <section id="articles">
+
+            <h2 class="section-title">記事一覧</h2>
+
+            <div class="article-list">
+
+                <article class="article-card">
+
+                    <h3>フェミニズムの歴史</h3>
+
+                    <p>
+                        女性参政権運動から現代までの歴史的な流れと、
+                        日本における展開を整理します。
+                    </p>
+
+                    <span class="article-status">執筆中</span>
+
+                </article>
+
+
+                <article class="article-card">
+
+                    <h3>男女共同参画政策</h3>
+
+                    <p>
+                        男女共同参画社会基本法、基本計画、
+                        内閣府男女共同参画局の役割を紹介します。
+                    </p>
+
+                    <span class="article-status">準備中</span>
+
+                </article>
+
+
+                <article class="article-card">
+
+                    <h3>日本国憲法の基本構造</h3>
+
+                    <p>
+                        国民主権、基本的人権の尊重、平和主義など、
+                        日本国憲法の基本原理を整理します。
+                    </p>
+
+                    <span class="article-status">準備中</span>
+
+                </article>
+
+
+                <article class="article-card">
+
+                    <h3>国会の仕組み</h3>
+
+                    <p>
+                        衆議院と参議院の違い、法律が成立するまでの流れ、
+                        国会審議の仕組みを紹介します。
+                    </p>
+
+                    <span class="article-status">準備中</span>
+
+                </article>
+
+
+                <article class="article-card">
+
+                    <h3>選挙制度の概要</h3>
+
+                    <p>
+                        衆議院選挙、参議院選挙、地方選挙など、
+                        日本の選挙制度の基本を整理します。
+                    </p>
+
+                    <span class="article-status">準備中</span>
+
+                </article>
+
+
+                <article class="article-card">
+
+                    <h3>社会保障制度の基礎</h3>
+
+                    <p>
+                        年金、医療、介護、雇用保険など、
+                        日本の社会保障制度を分野別に紹介します。
+                    </p>
+
+                    <span class="article-status">準備中</span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 分野別資料 -->
+
+        <section id="categories">
+
+            <h2 class="section-title">分野別資料</h2>
+
+            <ul class="category-list">
+
+                <li>
+                    <strong>政治</strong>
+                    <span>国会・選挙・政党・行政制度</span>
+                </li>
+
+                <li>
+                    <strong>法律</strong>
+                    <span>憲法・法律・裁判制度</span>
+                </li>
+
+                <li>
+                    <strong>社会問題</strong>
+                    <span>労働・福祉・人権・家族</span>
+                </li>
+
+                <li>
+                    <strong>男女共同参画</strong>
+                    <span>基本法・基本計画・関連統計</span>
+                </li>
+
+                <li>
+                    <strong>歴史</strong>
+                    <span>制度や社会運動の歴史的経緯</span>
+                </li>
+
+                <li>
+                    <strong>統計・公的資料</strong>
+                    <span>政府統計・白書・審議会資料</span>
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- サイトについて -->
+
+        <section id="about">
+
+            <h2 class="section-title">サイトについて</h2>
+
+            <p>
+                MinshuNoteは、政治や社会制度について調べる際の
+                出発点となる資料サイトを目指しています。
+            </p>
+
+            <p>
+                記事では、用語の意味だけでなく、制度が成立した背景、
+                関係する法律、公的機関の役割、参考となる資料などを
+                まとめて掲載します。
+            </p>
+
+            <p>
+                本サイトは個人が運営しており、政府機関、政党、
+                報道機関、研究機関などとは関係ありません。
+            </p>
+
+        </section>
+
+
+        <!-- 編集方針 -->
+
+        <section id="policy">
+
+            <h2 class="section-title">編集方針</h2>
+
+            <ul class="policy-list">
+
+                <li>
+                    法令、公的機関の発表、統計などの一次資料を優先して参照します。
+                </li>
+
+                <li>
+                    事実、制度の説明、引用、見解を可能な限り区別して記載します。
+                </li>
+
+                <li>
+                    複数の見解が存在する問題では、主要な立場を公平に紹介します。
+                </li>
+
+                <li>
+                    出典を確認できる形で掲載し、参考資料を明示します。
+                </li>
+
+                <li>
+                    誤りや古い情報が確認された場合は、必要に応じて修正します。
+                </li>
+
+                <li>
+                    個人への攻撃、差別的表現、根拠のない断定は掲載しません。
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+
+    <!-- サイドバー -->
+
+    <aside class="sidebar">
+
+
+        <section class="sidebar-box">
+
+            <h2 class="sidebar-title">MinshuNote</h2>
+
+            <p>
+                政治・法律・社会問題について、
+                公的資料を中心に情報を整理する個人運営サイトです。
+            </p>
+
+        </section>
+
+
+        <section class="sidebar-box">
+
+            <h2 class="sidebar-title">現在の掲載状況</h2>
+
+            <ul>
+                <li>公開記事：準備中</li>
+                <li>執筆中：フェミニズムの歴史</li>
+                <li>今後、順次追加予定</li>
+            </ul>
+
+        </section>
+
+
+        <section class="sidebar-box">
+
+            <h2 class="sidebar-title">主な参照資料</h2>
+
+            <ul>
+                <li>e-Gov法令検索</li>
+                <li>各府省庁の公表資料</li>
+                <li>政府統計</li>
+                <li>国会会議録</li>
+                <li>白書・審議会資料</li>
+                <li>研究機関・学術資料</li>
+            </ul>
+
+        </section>
+
+
+        <section class="sidebar-box">
+
+            <h2 class="sidebar-title">更新情報</h2>
+
+            <p class="update-date">
+                2026年：サイト構成を作成しました。
+            </p>
+
+        </section>
+
+    </aside>
+
+</div>
+
+
+<!-- ==============================
+     フッター
+============================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <p>© 2026 MinshuNote</p>
+
+        <p>
+            本サイトの内容は、特定の政治的立場を支持または批判することを
+            目的とするものではありません。
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
+```
